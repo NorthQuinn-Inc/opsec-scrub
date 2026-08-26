@@ -1,0 +1,3 @@
+# opsec-scrub scanning itself (dogfood config).
+# Test fixtures intentionally contain synthetic findings.
+exclude = ["tests/**"]

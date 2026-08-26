@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opsec-scrub"
+version = "0.1.0"
+description = "Pre-publication sanitizer for security repos: finds and deterministically pseudonymizes infrastructure leakage (real IPs, internal hostnames, home paths, MACs, overlay-network fingerprints, credentials) that secret scanners miss."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "NorthQuinn Inc." }]
+keywords = ["security", "opsec", "sanitizer", "redaction", "pseudonymization", "pre-push", "leak-prevention"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Security",
+]
+# Zero runtime dependencies by design: nothing to supply-chain-audit.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+opsec-scrub = "opsec_scrub.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/NorthQuinn-Inc/opsec-scrub"
+Issues = "https://github.com/NorthQuinn-Inc/opsec-scrub/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
