@@ -15,14 +15,19 @@ They will not blink at any of this:
 
 ```text
 Sensor forwards to 10.0.0.22, backup collector 10.0.0.23.    # scrub:ok
-Tailscale peer 100.64.0.14 (box.example.ts.net)               # scrub:ok
+Tailscale peer 100.64.0.14 (box.example.ts.net)              # scrub:ok
 Runbook lives in /home/analyst/runbooks/soc.md               # scrub:ok
-host core.fileserver.corp  wifi ap mac e8:9f:80:aa:bb:01       # scrub:ok
+host core.fileserver.corp  wifi ap mac e8:9f:80:aa:bb:01     # scrub:ok
 ```
 
 (The `scrub:ok` markers are this repo's own inline waivers; these
 deliberately leaky example lines are how this README passes its own
 scan gate in CI.)
+
+**Every identifier in this repository's examples, tests, and fixtures is
+synthetic.** Nothing here corresponds to real infrastructure. The values are
+chosen to sit inside the ranges the detectors actually flag, so the examples
+still demonstrate real findings and still require their `scrub:ok` waivers.
 
 Yet for anyone publishing detection content, IR writeups, runbooks, or
 sanitized configs, those lines are the leak: internal topology, overlay
@@ -63,7 +68,7 @@ Example scan output (values are masked; scanner output is itself a leak
 vector in shared CI logs, so nothing is echoed in full without `--show`):
 
 ```text
-deploy-notes.md:2: [HIGH] ipv4-private  10******22  (RFC 1918 private address reveals internal topology)
+deploy-notes.md:2: [HIGH] ipv4-private  10*****22  (RFC 1918 private address reveals internal topology)
 deploy-notes.md:4: [HIGH] hostname-tailnet  box************net  (Tailscale tailnet hostname)
 deploy-notes.md:7: [CRITICAL] secret-assignment  9f8************a98  (Credential-like assignment)
 ```
