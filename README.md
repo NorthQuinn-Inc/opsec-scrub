@@ -48,6 +48,14 @@ pip install .
 No runtime dependencies are pulled in; the tool is standard library
 only, by design. What you audit is what runs.
 
+### Development
+
+```bash
+git clone https://github.com/NorthQuinn-Inc/opsec-scrub.git
+cd opsec-scrub && pip install -e ".[dev]"
+pytest
+```
+
 ## Quick start
 
 ```bash

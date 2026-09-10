@@ -38,3 +38,6 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# src/ layout: put the package on sys.path so the suite runs from a bare
+# clone, without an editable install or an exported PYTHONPATH.
+pythonpath = ["src"]
